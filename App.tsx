@@ -38,14 +38,18 @@ export default function App() {
           style={styles.flatlist}
           renderItem={({ item }) => (
             <View style={styles.flatListContainer}>
-              <View>
-                <Text>{item.name}</Text>
-                <Text numberOfLines={2} ellipsizeMode="tail">
+              <View style={styles.textColumn}>
+                <Text style={styles.title}>{item.name}</Text>
+                <Text
+                  style={styles.description}
+                  numberOfLines={2}
+                  ellipsizeMode="tail"
+                >
                   {item.description}
                 </Text>
                 <Text>${item.price}</Text>
               </View>
-              <Image source={{ uri: item.image }} width={80} height={80} />
+              <Image source={{ uri: item.image }} style={styles.productImage} />
             </View>
           )}
           keyExtractor={(item) => item.id}
@@ -70,6 +74,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 10,
     justifyContent: 'space-between',
+  },
+  textColumn: {
+    flexDirection: 'column',
+    height: '100%',
+    maxWidth: '75%',
+    paddingVertical: 20,
+    justifyContent: 'center',
+    gap: 5,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  description: {
+    flexWrap: 'wrap',
+    fontStyle: 'italic',
+  },
+  productImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 5,
   },
   safeArea: {
     flex: 1,
