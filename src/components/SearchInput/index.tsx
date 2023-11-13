@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { StyleSheet, TextInput } from 'react-native'
 
 interface ISearchProps {
@@ -7,12 +7,29 @@ interface ISearchProps {
 }
 
 export const SearchInput = ({ search, setSearch }: ISearchProps) => {
+  const [inputValue, setInputValue] = useState(search)
+
+  // adding a small delay between user typing and re-fetching
+  useEffect(() => {
+    const debounceTimeout = setTimeout(() => {
+      setSearch(inputValue)
+    }, 300)
+
+    return () => {
+      clearTimeout(debounceTimeout)
+    }
+  }, [inputValue, setSearch])
+
+  const handleTextChange = (text: string) => {
+    setInputValue(text)
+  }
+
   return (
     <TextInput
       style={styles.container}
       placeholder="Search across title and description..."
-      value={search}
-      onChangeText={setSearch}
+      value={inputValue}
+      onChangeText={handleTextChange}
     />
   )
 }
