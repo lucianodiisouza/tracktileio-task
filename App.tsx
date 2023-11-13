@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
 
-import { Home } from './screens/Home'
+import { Home } from './src/screens/Home'
 
 export default function App() {
   return (
@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-
   safeArea: {
-    flex: 1,
+    width: '100%',
+    height: '100%',
   },
 })
