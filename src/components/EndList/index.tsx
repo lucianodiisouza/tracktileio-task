@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 
-export const EndList = () => {
+const EndList = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>You have loaded all itens ✨</Text>
@@ -19,3 +19,5 @@ const styles = StyleSheet.create({
     color: '#cccccc',
   },
 })
+
+export default EndList

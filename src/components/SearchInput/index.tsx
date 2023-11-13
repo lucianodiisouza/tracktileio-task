@@ -6,7 +6,7 @@ interface ISearchProps {
   setSearch: Dispatch<SetStateAction<string>>
 }
 
-export const SearchInput = ({ search, setSearch }: ISearchProps) => {
+const SearchInput = ({ search, setSearch }: ISearchProps) => {
   const [inputValue, setInputValue] = useState(search)
 
   // adding a small delay between user typing and re-fetching
@@ -45,3 +45,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 })
+
+export default SearchInput

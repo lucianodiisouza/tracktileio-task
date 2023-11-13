@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import { IProductData } from '../../types'
 
-export const ProductCard = (product: IProductData) => {
+const ProductCard = (product: IProductData) => {
   const { name, description, price, image } = product
   return (
     <View style={styles.container}>
@@ -59,3 +59,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 })
+
+export default ProductCard

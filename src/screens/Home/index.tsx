@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import { IProductData } from '../../types'
 import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native'
-import { ProductCard } from '../../components/ProductCard'
-import { ErrorCard } from '../../components/ErrorCard'
-import { SearchInput } from '../../components/SearchInput'
-import { EndList } from '../../components/EndList'
+
+import { EndList, ErrorCard, ProductCard, SearchInput } from '../../components'
 
 export const Home = () => {
   const [data, setData] = useState<IProductData[]>([])

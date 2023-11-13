@@ -1,7 +1,6 @@
 import { Text, View, Image, StyleSheet } from 'react-native'
-import errorImage from '../../assets/error.png'
 
-export const ErrorCard = () => {
+const ErrorCard = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.errorText}>Oops! Error while fetching data</Text>
@@ -25,3 +24,5 @@ const styles = StyleSheet.create({
   },
   errorImage: { width: 200, height: 200 },
 })
+
+export default ErrorCard
