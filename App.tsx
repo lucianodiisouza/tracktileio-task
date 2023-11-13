@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native'
 import { IProductData } from './types'
+import { ProductCard } from './components/ProductCard'
 
 export default function App() {
   const [data, setData] = useState<IProductData[]>([])
@@ -36,22 +37,7 @@ export default function App() {
         <FlatList
           data={data}
           style={styles.flatlist}
-          renderItem={({ item }) => (
-            <View style={styles.flatListContainer}>
-              <View style={styles.textColumn}>
-                <Text style={styles.title}>{item.name}</Text>
-                <Text
-                  style={styles.description}
-                  numberOfLines={2}
-                  ellipsizeMode="tail"
-                >
-                  {item.description}
-                </Text>
-                <Text>${item.price}</Text>
-              </View>
-              <Image source={{ uri: item.image }} style={styles.productImage} />
-            </View>
-          )}
+          renderItem={({ item }) => <ProductCard {...item} />}
           keyExtractor={(item) => item.id}
         />
       </SafeAreaView>
@@ -64,38 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  flatListContainer: {
-    flexDirection: 'row',
-    height: 100,
-    width: '98%',
-    backgroundColor: '#efefef',
-    marginVertical: 5,
-    alignItems: 'center',
-    paddingHorizontal: 10,
-    borderRadius: 10,
-    justifyContent: 'space-between',
-  },
-  textColumn: {
-    flexDirection: 'column',
-    height: '100%',
-    maxWidth: '75%',
-    paddingVertical: 20,
-    justifyContent: 'center',
-    gap: 5,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  description: {
-    flexWrap: 'wrap',
-    fontStyle: 'italic',
-  },
-  productImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 5,
-  },
+
   safeArea: {
     flex: 1,
   },
