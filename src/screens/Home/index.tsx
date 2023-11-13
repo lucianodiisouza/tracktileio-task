@@ -3,11 +3,13 @@ import { IProductData } from '../../types'
 import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native'
 import { ProductCard } from '../../components/ProductCard'
 import { ErrorCard } from '../../components/ErrorCard'
+import { SearchInput } from '../../components/SearchInput'
 
 export const Home = () => {
   const [data, setData] = useState<IProductData[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<boolean>(false)
+  const [search, setSearch] = useState<string>('')
 
   const fetchData = () => {
     setIsLoading(true)
@@ -29,6 +31,7 @@ export const Home = () => {
     <View style={{ flex: 1 }}>
       {isLoading && <ActivityIndicator />}
       {error && <ErrorCard />}
+      <SearchInput search={search} setSearch={setSearch} />
       {data && (
         <FlatList
           data={data}
