@@ -2,16 +2,17 @@ import { View, Text, Image, StyleSheet } from 'react-native'
 import { IProductData } from '../../types'
 
 export const ProductCard = (product: IProductData) => {
+  const { name, description, price, image } = product
   return (
     <View style={styles.container}>
       <View style={styles.textColumn}>
-        <Text style={styles.title}>{product.name}</Text>
+        <Text style={styles.title}>{name}</Text>
         <Text style={styles.description} numberOfLines={2} ellipsizeMode="tail">
-          {product.description}
+          {description}
         </Text>
-        <Text>${product.price}</Text>
+        <Text>${price}</Text>
       </View>
-      <Image source={{ uri: product.image }} style={styles.productImage} />
+      <Image source={{ uri: image }} style={styles.productImage} />
     </View>
   )
 }
