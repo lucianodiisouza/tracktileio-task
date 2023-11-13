@@ -21,3 +21,5 @@
 -   you can use the search input to search across title and description (fulltextsearch) <br>
 
 ## screenshot
+
+<img width="415" alt="screenshot" src="https://github.com/lucianodiisouza/tracktileio-task/assets/10830068/26c7978a-225d-4bb8-a836-8d917c90fa97">
