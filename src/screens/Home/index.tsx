@@ -13,7 +13,7 @@ export const Home = () => {
 
   const fetchData = () => {
     setIsLoading(true)
-    fetch(`http://localhost:3000/products`)
+    fetch(`http://localhost:3000/products?q=${search}`)
       .then((response) => response.json())
       .then((response) => {
         setData(response)
@@ -25,7 +25,7 @@ export const Home = () => {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [search])
 
   return (
     <View style={{ flex: 1 }}>
