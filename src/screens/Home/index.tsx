@@ -3,6 +3,7 @@ import { IProductData } from '../../types'
 import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native'
 
 import { EndList, ErrorCard, ProductCard, SearchInput } from '../../components'
+import { BASE_URL } from '../../utils/apiUrl'
 
 export const Home = () => {
   const [data, setData] = useState<IProductData[]>([])
@@ -16,7 +17,7 @@ export const Home = () => {
 
   const fetchData = () => {
     setIsLoading(true)
-    fetch(`http://localhost:3000/products?_limit=${limit}&q=${search}`)
+    fetch(`${BASE_URL}/products?_limit=${limit}&q=${search}`)
       .then((response) => {
         if (response.ok) {
           return response.json().then((data) => ({ data }))
