@@ -1,13 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar'
+import { useEffect, useState } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
 export default function App() {
+  const [data, setData] = useState([])
+
+  const fetchData = () => {
+    fetch(`http://localhost:3000/products`)
+      .then((response) => response.json())
+      .then((response) => setData(response))
+      .catch((error) => console.warn(error))
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
+      <Text>{data && JSON.stringify(data)}</Text>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -17,4 +31,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
