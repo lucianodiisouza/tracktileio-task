@@ -2,7 +2,13 @@ import { useEffect, useState } from 'react'
 import { IProductData } from '../../types'
 import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native'
 
-import { EndList, ErrorCard, ProductCard, SearchInput } from '../../components'
+import {
+  EmptyList,
+  EndList,
+  ErrorCard,
+  ProductCard,
+  SearchInput,
+} from '../../components'
 import { BASE_URL } from '../../utils/apiUrl'
 
 export const Home = () => {
@@ -52,17 +58,21 @@ export const Home = () => {
   return (
     <View style={styles.container}>
       {error && <ErrorCard />}
-      <SearchInput search={search} setSearch={setSearch} />
-      {data && (
-        <FlatList
-          data={data}
-          style={styles.flatlist}
-          renderItem={({ item }) => <ProductCard {...item} />}
-          keyExtractor={(item) => item.id}
-          onEndReached={loadMoreProducts}
-          onEndReachedThreshold={0.1}
-          ListFooterComponent={renderEndList}
-        />
+      {!error && data.length === 0 ? (
+        <EmptyList />
+      ) : (
+        <>
+          <SearchInput search={search} setSearch={setSearch} />
+          <FlatList
+            data={data}
+            style={styles.flatlist}
+            renderItem={({ item }) => <ProductCard {...item} />}
+            keyExtractor={(item) => item.id}
+            onEndReached={loadMoreProducts}
+            onEndReachedThreshold={0.1}
+            ListFooterComponent={renderEndList}
+          />
+        </>
       )}
     </View>
   )
